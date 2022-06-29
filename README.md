@@ -37,7 +37,7 @@ for t in range(1,len(MonthlyData_Factor3)):
         Signal_factor_3[t] = Signal_factor_3[t-1]
 ```
 
-修改后代码（为了防止代码累赘，所以把规则和求分位数的部分放在一起了「实际上就是后面我苦思冥想把逻辑给理顺了，然后放在一起写了」）：
+修改后代码（为了防止代码累赘，所以把规则和求分位数的部分放在一起了「实际上就是后面我想了半天之后把逻辑给理顺了，然后放在一起写了」）：
 
 ```
 for t in range(1,len(MonthlyData_Factor3)):
