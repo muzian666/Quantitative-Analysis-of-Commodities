@@ -7,6 +7,8 @@
 
 尝试复刻研报：https://mp.weixin.qq.com/s/TW9ruRTTqupAxkvW86YZvA
 
+数据来与：Wind金融终端、同花顺iFinD
+
 ## 对问题的记录
 ### 2022/06/29
 1. 时间频率不太对，可能需要resample，研报中给的可能是周数据，实际上使用的是月数据。
