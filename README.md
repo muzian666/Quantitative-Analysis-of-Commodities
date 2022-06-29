@@ -7,7 +7,7 @@
 
 尝试复刻研报：https://mp.weixin.qq.com/s/TW9ruRTTqupAxkvW86YZvA
 
-数据来源：Wind金融终端、同花顺iFinD
+数据来源：Wind金融终端、同花顺iFinD（手动摘取，没用API）
 
 ## 对问题的记录
 ### 2022/06/29
