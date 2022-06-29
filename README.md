@@ -5,3 +5,6 @@
 
 尝试复刻研报：https://mp.weixin.qq.com/s/TW9ruRTTqupAxkvW86YZvA
 
+## 当前的一些问题
+1. 时间频率不太对，可能需要resample，研报中给的可能是周数据，实际上使用的是月数据。
+2. 因子3的观测窗口区间不太对，需要重新考虑一下
