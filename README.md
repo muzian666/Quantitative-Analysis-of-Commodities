@@ -23,7 +23,7 @@
 
 修改前代码（为了代码清晰，所以把规则和求分位数的部分给分开了「实际上就是我自己已经弄混了」）：
 
-```
+```python
 Motion_Array = np.array([MonthlyData_Factor3['Motion']])
 Motion_Array = Motion_Array.astype('float')
 Percentile_Motion = np.percentile(Motion_Array,70)
@@ -41,7 +41,7 @@ for t in range(1,len(MonthlyData_Factor3)):
 
 修改后代码（为了防止代码累赘，所以把规则和求分位数的部分放在一起了「实际上就是后面我想了半天之后把逻辑给理顺了，然后放在一起写了」）：
 
-```
+```python
 for t in range(1,len(MonthlyData_Factor3)):
     if (Signal_factor_3[t-1]!=1)&((MonthlyData_Factor3['Motion'][t-1])<(np.percentile(np.array([MonthlyData_Factor3['Motion'][0:t]]),60))):
         Signal_factor_3[t] = 1
