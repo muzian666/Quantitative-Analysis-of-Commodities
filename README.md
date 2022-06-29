@@ -14,7 +14,7 @@
 ## 对问题的修正
 ### 2022/06/29
 1. 关于因子3的观测窗口区间的问题，重新采取了一个新的措施，就是根据时间的长短来设定观测窗口，比如说，t=10时，则观测窗口为前10个时间点的数据的分位数，这样显得稍微合理一些。毕竟从人之常情来看过去的时间点不能预测未来的数据。修正之后，结果显得稍微比较合理：
-![image](https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2020.06.29/Result/Factor3-2022.06.29.png)
+![如果直接使用全局观测的分位数的结果](https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2020.06.29/Result/Factor3-2022.06.29.png)
 
 
 
