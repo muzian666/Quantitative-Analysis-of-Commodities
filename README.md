@@ -14,8 +14,35 @@
 ## 对问题的修正
 ### 2022/06/29
 1. 关于因子3的观测窗口区间的问题，重新采取了一个新的措施，就是根据时间的长短来设定观测窗口，比如说，t=10时，则观测窗口为前10个时间点的数据的分位数，这样显得稍微合理一些。毕竟从人之常情来看过去的时间点不能预测未来的数据。修正之后，结果显得稍微比较合理（注：这里仍然使用的是月数据而不是周数据）：
-
 <div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29/Result/Factor3-2022.06.29.png" width="350px" alt="修改之前的因子3表现"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/Factor3-2022.06.29.png" width="350px" alt="修改之后的因子3表现"></div>
-
+左：修改因子3规则前的表现  右：修改因子3规则后的表现
+可以看出，修改了因子3的规则后，其中前半段会开始进行投资了，但是综合表现却不如修改前，虽然但是，修改之后会使得投资表现的更加合理。
+修改前代码（为了代码清晰，所以把规则和求分位数的部分给分开了「实际上就是我自己已经弄混了」）：
+'''
+Motion_Array = np.array([MonthlyData_Factor3['Motion']])
+Motion_Array = Motion_Array.astype('float')
+Percentile_Motion = np.percentile(Motion_Array,70)
+Signal_factor_3 = pd.Series(index = time_factor_3, data = 0)
+loc = 0
+for t in range(1,len(MonthlyData_Factor3)):
+    if (Signal_factor_3[t-1]!=1)&((MonthlyData_Factor3['Motion'][t-1])>Percentile_Motion):
+        Signal_factor_3[t] = 1
+        loc = t
+    elif (Signal_factor_3[t-1]!=0)&((MonthlyData_Factor3['Motion'][t-1])<Percentile_Motion):
+        Signal_factor_3[t] = -1
+    else:
+        Signal_factor_3[t] = Signal_factor_3[t-1]
+'''
+修改后代码（为了防止代码累赘，所以把规则和求分位数的部分放在一起了「实际上就是后面我苦思冥想把逻辑给理顺了，然后放在一起写了」）：
+'''
+for t in range(1,len(MonthlyData_Factor3)):
+    if (Signal_factor_3[t-1]!=1)&((MonthlyData_Factor3['Motion'][t-1])<(np.percentile(np.array([MonthlyData_Factor3['Motion'][0:t]]),60))):
+        Signal_factor_3[t] = 1
+        loc = t
+    elif (Signal_factor_3[t-1]!=0)&((MonthlyData_Factor3['Motion'][t-1])>(np.percentile(np.array([MonthlyData_Factor3['Motion'][0:t]]),60))):
+        Signal_factor_3[t] = -1
+    else:
+        Signal_factor_3[t] = Signal_factor_3[t-1]
+'''
 
 
