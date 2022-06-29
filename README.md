@@ -53,4 +53,6 @@ for t in range(1,len(MonthlyData_Factor3)):
         Signal_factor_3[t] = Signal_factor_3[t-1]
 ```
 
-
+## 结果展示
+### 2022/06/29
+<div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorT-2022.06.29.png" width="450px" alt="修改之前的因子3表现"></div>
