@@ -55,4 +55,4 @@ for t in range(1,len(MonthlyData_Factor3)):
 
 ## 结果展示
 ### 2022/06/29
-<div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorT-2022.06.29.png" width="450px" alt="修改之前的因子3表现"></div>
+<div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorF-2022.06.29.png" width = "350px" alt="单个综合因子展现"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorT-2022.06.29.png" width="350px" alt="所有因子表现"></div>
