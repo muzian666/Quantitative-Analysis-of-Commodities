@@ -129,7 +129,7 @@ for t in range(1,len(MonthlyData_factor1)):
 
 ### 2022/06/30
 
-hh，没啥实际上的结果，放一张效果最好的图和之前结果的对比吧QwQ
+hh，没啥实际上的结果，今天只完成了对因子1的重新修改，放一张效果最好的图和之前结果的对比吧QwQ
 
 <div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/Factor1-2022.06.29.png" width = "350px" alt="因子1-旧"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.30/Result/Factor%201.png" width = "350px" alt="因子1重新调参"></div>
 
