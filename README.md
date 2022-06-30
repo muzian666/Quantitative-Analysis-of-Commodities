@@ -55,4 +55,7 @@ for t in range(1,len(MonthlyData_Factor3)):
 
 ## 结果展示
 ### 2022/06/29
+
+左：综合因子相对于基准表现   右：所有因子相对于基准的表现
+
 <div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorF-2022.06.29.png" width = "350px" alt="单个综合因子展现"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/FactorT-2022.06.29.png" width="350px" alt="所有因子表现"></div>
