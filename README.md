@@ -126,6 +126,7 @@ for t in range(1,len(MonthlyData_factor1)):
 1. 好烦啊，怎么2022年就过了一半了呢，真让人头大
 2. 今天把所有的因子都写完了，其中有几个因子仔细的调了一下参数，效果还可以，但是跟研报展示的结果还是毫无关系。
 3. 我不太能理解他们是怎么又是周数据又是月数据又是季数据的，这样数据也没法对齐啊，到底是怎么做到的，我非常的好奇。
+4. Whatever 不管了，所有的内容都已经写完了，下周去跟大大哥讨论一下详细的内容。
 
 
 ## 结果展示
@@ -140,5 +141,10 @@ for t in range(1,len(MonthlyData_factor1)):
 hh，没啥实际上的结果，今天只完成了对因子1的重新修改，放一张效果最好的图和之前结果的对比吧QwQ
 
 <div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/Factor1-2022.06.29.png" width = "350px" alt="因子1-旧"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.30/Result/Factor%201.png" width = "350px" alt="因子1重新调参"></div>
+
+
+# 涉及到的因子的算法
+### 明天更新，今天不想写了，债见～
+
 
 
