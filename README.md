@@ -8,6 +8,34 @@
 
 数据来源：Wind金融终端、同花顺iFinD（手动摘取，没用API）
 
+# 总结
+## 整体逻辑
+
+大概的逻辑是这个样子，首先导入需要用到的库文件：
+
+```python
+import numpy as np #用于做数学计算
+import pandas as pd #用于做数据处理的
+import matplotlib.pyplot as plt #用于画图的
+import matplotlib.ticker as mticker #用于对x轴密度进行处理的
+```
+
+导入完库文件后，因为整篇内容都有一个核心参数就是原油价格，这里的原油价格我们使用布朗特原油，所以这里的价格可以作为全局变量，放在第一个位置。
+
+```python
+price = pd.DataFrame(pd.read_csv('./WeekData/NYMEX_1.csv', encoding = 'utf-8', header = None))  #读取csv文件
+price = price.iloc[1:1777,:] #去掉首行的名称和尾行的水印
+price.columns = ['date', 'price']  #对两列进行命名
+price = price.set_index('date') #把时间作为表格的index
+price = price['2009-12-25':'2021'] #选取需要的时间段
+price = price.astype('float')  #把数据类型转换为浮点数
+price_return = price/price.shift(1)-1  #计算价格的Return
+```
+
+
+
+
+# 过程记录
 ## 对问题的记录
 
 ### 2022/06/29
@@ -142,9 +170,6 @@ hh，没啥实际上的结果，今天只完成了对因子1的重新修改，�
 
 <div align=center><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.29-1/Result/Factor1-2022.06.29.png" width = "350px" alt="因子1-旧"><img src="https://github.com/muzian666/Quantitative-Analysis-of-Commodities/blob/main/2022.06.30/Result/Factor%201.png" width = "350px" alt="因子1重新调参"></div>
 
-
-# 涉及到的因子的算法
-### 明天更新，今天不想写了，债见～
 
 
 
