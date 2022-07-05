@@ -32,7 +32,93 @@ price = price.astype('float')  #把数据类型转换为浮点数
 price_return = price/price.shift(1)-1  #计算价格的Return
 ```
 
+然后就是计算第一个因子啦～
 
+## 基本面因子
+
+第一个因子因为具有两个指标，库存指标与需求指标，需要先对这两个指标的信号做出一定的反应，然后将信号输出。
+
+### 库存指标
+
+```python
+for t in range(1,len(WeekData_factor1)):
+    if ((stock_change[t]>0)&(stock_change[t]>stock_change[t-1])&(abs((stock_change[t])-abs(stock_change[t-1]))<0.535)):
+        Signal_factor1[t] = -1
+        loc = t
+    elif ((stock_change[t]<0)&(stock_change[t]>stock_change[t-1])&(abs((stock_change[t])-abs(stock_change[t-1]))<0.535)):
+        Signal_factor1[t] = -1
+    elif ((stock_change[t]>0)&(stock_change[t]<stock_change[t-1])&(abs((stock_change[t])-abs(stock_change[t-1]))<0.535)):
+        Signal_factor1[t] = 1
+    elif ((stock_change[t]<0)&(stock_change[t]<stock_change[t-1])&(abs((stock_change[t])-abs(stock_change[t-1]))<0.535)):
+        Signal_factor1[t] = 1
+    else:
+        Signal_factor1[t] = Signal_factor1[t-1]
+```
+
+### 需求指标
+
+```python
+for t in range(8, len(factor1_2)):
+    if abs(factor1_2[t] - factor1_2[t-8])>5.1:
+        Signal_factor1_2[t] = 1
+        loc = t
+    elif abs(factor1_2[t] - factor1_2[t-8])<5.1:
+        Signal_factor1_2[t] = -1
+    else:
+        Signal_factor1_2[t] = Signal_factor1_2 [t-1]
+```
+
+## 流动性指标
+
+```python
+for t in range(13,len(WeekData_factor2)):
+    if WeekData_factor2['M2'][t] > (np.percentile(np.array([WeekData_factor2['M2'][t-12:t]]),62)):
+        Signal_factor2[t] = 1
+        loc = t
+    elif WeekData_factor2['M2'][t] < (np.percentile(np.array([WeekData_factor2['M2'][t-12:t]]),62)):
+        Signal_factor2[t] = -1
+    else:
+        Signal_factor2[t] = Signal_factor2[t-1]
+```
+
+## 情绪指标
+
+```python
+for t in range(1,len(WeekData_factor3)):
+    if WeekData_factor3['CFTC'][t] > (np.percentile(np.array([WeekData_factor3['CFTC'][0:t]]),98)):
+        Signal_factor3[t] = 1
+        loc = t
+    elif WeekData_factor3['CFTC'][t] < (np.percentile(np.array([WeekData_factor3['CFTC'][0:t]]),98)):
+        Signal_factor3[t] = -1
+    else:
+        Signal_factor3[t] = Signal_factor3[t-1]
+```
+
+## 美元指数
+
+```python
+for t in range(7, len(WeekData_factor4)):
+    if np.mean(WeekData_factor4['USD index'][t-3:t]) < np.mean(WeekData_factor4['USD index'][t-7:t-4]):
+        Signal_factor4[t] = 1
+        loc = t
+    elif np.mean(WeekData_factor4['USD index'][t-3:t]) > np.mean(WeekData_factor4['USD index'][t-7:t-4]):
+        Signal_factor4[t] = -1
+    else:
+        Signal_factor4[t] = Signal_factor4[t-1]
+```
+
+## 风险因子信号
+
+```python
+for t in range(2, len(WeekData_factor5)):
+    if (WeekData_factor5['VIX index'][t] < (np.percentile(np.array([WeekData_factor5['VIX index'][0:t-1]]),45)))&(WeekData_factor5['VIX index'][t] > 17):
+        Signal_factor5[t] = 1
+        loc = t
+    elif (WeekData_factor5['VIX index'][t] > (np.percentile(np.array([WeekData_factor5['VIX index'][0:t-1]]),55)))&(WeekData_factor5['VIX index'][t] > 17):
+        Signal_factor5[t] = -1
+    else:
+        Signal_factor5[t] = 0
+```
 
 
 # 过程记录
@@ -156,6 +242,9 @@ for t in range(1,len(MonthlyData_factor1)):
 3. 我不太能理解他们是怎么又是周数据又是月数据又是季数据的，这样数据也没法对齐啊，到底是怎么做到的，我非常的好奇。
 4. Whatever 不管了，所有的内容都已经写完了，下周去跟大大哥讨论一下详细的内容。
 
+### 2022/07/04
+1. 可恶，发现数据出现了问题，开始对数据进行一定的修改。
+2. 发现sharp ratio太高了，这说明风险值也很高，不具备实际可操作性，修改一下～
 
 ## 结果展示
 ### 2022/06/29
